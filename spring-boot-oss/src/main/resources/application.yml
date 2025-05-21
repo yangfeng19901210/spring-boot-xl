@@ -3,5 +3,6 @@ aliyun:
     endpoint: oss-cn-hangzhou.aliyuncs.com  # 替换为你的地域节点
     bucket-name: ttly
     url-expire-time: 3600  # 预签名 URL 有效期（秒）
+    dir-prefix: uploads/
 server:
   port: 7000
