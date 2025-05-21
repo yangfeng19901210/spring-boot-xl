@@ -57,4 +57,28 @@ public class OssUtil {
                 .map(f -> f.substring(f.lastIndexOf(".")))
                 .orElse(".dat");
     }
+    /**
+     * 删除文件
+     * @param objectKey
+     * @Return: java.lang.Boolean
+     * @author: yangfeng
+     * @date: 2025/5/21 15:55
+     **/
+    public Boolean deleteFile(String objectKey) {
+        try {
+            boolean isExist = ossClient.doesObjectExist(bucketName, objectKey);
+            if (!isExist) {
+                // 如果文件不存在就直接返回true。不需要进行删除
+                return Boolean.TRUE;
+            }
+
+            // 删除文件或目录。如果要删除目录，目录必须为空。
+            ossClient.deleteObject(bucketName, objectKey);
+
+            return Boolean.TRUE;
+        } catch (Exception ex) {
+            log.error("oss文件删除失败【downloadFile】：" + objectKey);
+            throw new RuntimeException("删除文件失败",ex);
+        }
+    }
 }
