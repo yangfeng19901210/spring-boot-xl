@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+/spring-boot-oss/src/main/resources/secret/
+/spring-boot-oss/src/main/resources/secret/
