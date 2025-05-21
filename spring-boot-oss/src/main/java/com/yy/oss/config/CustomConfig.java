@@ -1,0 +1,20 @@
+package com.yy.oss.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+import javax.annotation.PostConstruct;
+
+@Configuration
+@PropertySource(value = "classpath:secret/oss-secret.properties", encoding = "UTF-8")
+public class CustomConfig {
+    @Value("${oss.key.id}")
+    private String ossId;
+    @Value("${oss.key.secret}")
+    private String ossSecret;
+    @PostConstruct
+    public void init(){
+        System.out.println("ossId = " + ossId);
+    }
+}

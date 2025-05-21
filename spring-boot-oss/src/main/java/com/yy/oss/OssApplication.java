@@ -1,7 +1,10 @@
 package com.yy.oss;
 
+import com.yy.oss.config.CustomConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import javax.annotation.Resource;
 
 /*********************************************************
  ** 文件上传服务启动类
@@ -13,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *********************************************************/
 @SpringBootApplication
 public class OssApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(OssApplication.class, args);
     }
