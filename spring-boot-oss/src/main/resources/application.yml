@@ -1,0 +1,9 @@
+aliyun:
+  oss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com  # 替换为你的地域节点
+    access-key-id: LTAI5tRN2UP9y2ynR77HTyNh
+    access-key-secret: eG4UABwg8mu0PcpwY5eaakfRCwp4wc
+    bucket-name: ttly
+    url-expire-time: 3600  # 预签名 URL 有效期（秒）
+server:
+  port: 7000
