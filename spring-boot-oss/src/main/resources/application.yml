@@ -6,3 +6,8 @@ aliyun:
     dir-prefix: uploads/
 server:
   port: 7000
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB

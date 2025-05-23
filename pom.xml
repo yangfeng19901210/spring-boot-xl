@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-boot-oss</module>
+        <module>spring-boot-study</module>
     </modules>
 
     <properties>

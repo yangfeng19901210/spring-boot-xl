@@ -56,4 +56,21 @@ public class FileController {
                     .body(Map.of("code", 500, "msg", "删除失败：" + e.getMessage()));
         }
     }
+
+    @PostMapping("/shardUpload")
+    public ResponseEntity<Map<String, Object>> shardUpload(@RequestParam("file") MultipartFile file) {
+        try {
+            String url = ossUtil.shardUpload(file);
+            return ResponseEntity.ok(Map.of(
+                    "code", 200,
+                    "url", url,
+                    "message", "上传成功"
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of(
+                    "code", 500,
+                    "message", "上传失败：" + e.getMessage()
+            ));
+        }
+    }
 }
