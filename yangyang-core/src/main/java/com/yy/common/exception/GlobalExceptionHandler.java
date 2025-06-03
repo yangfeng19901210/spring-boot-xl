@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
      * @throws
      * @author :loulan
      */
-    @ExceptionHandler({IllegalArgumentException.class, AssertException.class})
+    @ExceptionHandler({IllegalArgumentException.class, AssertException.class,BusinessException.class, BaseException.class})
     public Result handlerAssertException(Exception ex) {
         log.error("发生业务异常", ex);
         return Result.error(ex.getMessage());

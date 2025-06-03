@@ -1,5 +1,6 @@
 package com.yy.study.controller;
 
+import com.yy.common.exception.BusinessException;
 import com.yy.study.domain.entity.User;
 import com.yy.study.service.TestService;
 import io.gitee.loulan_yxq.owner.core.tool.AssertTool;
@@ -36,7 +37,8 @@ public class TestController {
     public String testAssert(String name,Integer age) {
         User user = null;
 //        Assert.notNull(user,"用户不存在");
-        AssertTool.notNull(user, "用户不存在");
-        return name+","+age;
+//        AssertTool.notNull(user, "用户不存在");
+        throw new BusinessException("用户id不可为空");
+//        return name+","+age;
     }
 }

@@ -2,13 +2,19 @@ package com.yy.common;
 
 import lombok.Data;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 @Data
 public class Result<T> {
     private Integer code;  // 业务状态码（非HTTP状态码）
     private String msg;   // 提示信息
     private T data;       // 业务数据
     private String taskId;
-    private long timestamp = System.currentTimeMillis(); // 响应时间戳
+    private String timestamp = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
+            .withZone(ZoneId.of("GMT+8"))
+            .format(Instant.ofEpochMilli(System.currentTimeMillis())); // 响应时间戳
 
     // 成功响应（带数据）
     public static <T> Result<T> success(T data) {
