@@ -2,6 +2,7 @@ package com.yy.study.controller;
 
 import com.yy.study.domain.entity.User;
 import com.yy.study.service.TestService;
+import io.gitee.loulan_yxq.owner.core.tool.AssertTool;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +35,8 @@ public class TestController {
     @PostMapping("/testAssert")
     public String testAssert(String name,Integer age) {
         User user = null;
-        Assert.notNull(user,"用户不存在");
+//        Assert.notNull(user,"用户不存在");
+        AssertTool.notNull(user, "用户不存在");
         return name+","+age;
     }
 }

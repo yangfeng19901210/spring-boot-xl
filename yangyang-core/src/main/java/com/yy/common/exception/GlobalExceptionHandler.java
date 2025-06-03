@@ -1,6 +1,7 @@
 package com.yy.common.exception;
 
 import com.yy.common.Result;
+import io.gitee.loulan_yxq.owner.core.exception.AssertException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -23,7 +24,7 @@ public class GlobalExceptionHandler {
      * @throws
      * @author :loulan
      */
-    @ExceptionHandler({IllegalArgumentException.class})
+    @ExceptionHandler({IllegalArgumentException.class, AssertException.class})
     public Result handlerAssertException(Exception ex) {
         log.error("发生业务异常", ex);
         return Result.error(ex.getMessage());
