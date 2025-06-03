@@ -1,12 +1,9 @@
 package com.yy.study.controller;
 
 import cn.dsk.service.HelloService;
-import com.yy.common.exception.BusinessException;
 import com.yy.study.domain.entity.User;
 import com.yy.study.service.TestService;
-import io.gitee.loulan_yxq.owner.core.tool.AssertTool;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +39,6 @@ public class TestController {
 //        Assert.notNull(user,"用户不存在");
 //        AssertTool.notNull(user, "用户不存在");
 //        throw new BusinessException("用户id不可为空");
-        helloService.sayHello(name);
-        return name+","+age;
+        return helloService.sayHello(name);
     }
 }

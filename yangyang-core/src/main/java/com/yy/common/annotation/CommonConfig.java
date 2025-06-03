@@ -17,6 +17,8 @@ import java.lang.annotation.*;
 @Target(value = {ElementType.TYPE})  //作用与类
 @Retention(RetentionPolicy.RUNTIME)  //运行时注解
 @Documented
-@Import({GlobalExceptionHandler.class, SpringTool.class})
+@Import({GlobalExceptionHandler.class,
+        SpringTool.class
+})
 public @interface CommonConfig {
 }
