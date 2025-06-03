@@ -1,5 +1,6 @@
 package com.yy.study.controller;
 
+import cn.dsk.service.HelloService;
 import com.yy.common.exception.BusinessException;
 import com.yy.study.domain.entity.User;
 import com.yy.study.service.TestService;
@@ -26,6 +27,8 @@ import javax.annotation.Resource;
 public class TestController {
     @Resource
     private TestService testService;
+    @Resource
+    private HelloService helloService;
     // 测试方法
     @RequestMapping("/hello")
     public String hello() {
@@ -38,7 +41,8 @@ public class TestController {
         User user = null;
 //        Assert.notNull(user,"用户不存在");
 //        AssertTool.notNull(user, "用户不存在");
-        throw new BusinessException("用户id不可为空");
-//        return name+","+age;
+//        throw new BusinessException("用户id不可为空");
+        helloService.sayHello(name);
+        return name+","+age;
     }
 }
