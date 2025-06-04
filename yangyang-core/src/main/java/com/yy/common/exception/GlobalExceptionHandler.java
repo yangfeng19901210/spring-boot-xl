@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
+import java.util.concurrent.atomic.AtomicReference;
+
 /*********************************************************
  ** 全局异常处理
  ** <br><br>
@@ -30,6 +33,13 @@ public class GlobalExceptionHandler {
         return Result.error(ex.getMessage());
     }
 
+    //ConstraintViolationException
+    @ExceptionHandler(ConstraintViolationException.class)
+    public Result handlerException(ConstraintViolationException ex) {
+        log.error("发生异常", ex);
+        return Result.error(ex.getMessage());
+    }
+
     /**
      * 处理未知异常信息
      *
@@ -43,4 +53,6 @@ public class GlobalExceptionHandler {
         log.error("发生异常", ex);
         return Result.error("系统忙，请稍后重试");
     }
+
+
 }

@@ -4,11 +4,14 @@ import cn.dsk.service.HelloService;
 import com.yy.study.domain.entity.User;
 import com.yy.study.service.TestService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /*********************************************************
  ** 测试controller
@@ -21,6 +24,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/test")
 @Slf4j
+@Validated
 public class TestController {
     @Resource
     private TestService testService;
@@ -34,11 +38,12 @@ public class TestController {
         return "Hello, World!";
     }
     @PostMapping("/testAssert")
-    public String testAssert(String name,Integer age) {
-        User user = null;
+    public User test(@Pattern(regexp = ".{3,20}", message = "用户名长度需为3-20字符") String name,
+                             @NotNull(message = "年龄不可为空") Integer age) {
+        User user = new User(name);
 //        Assert.notNull(user,"用户不存在");
 //        AssertTool.notNull(user, "用户不存在");
 //        throw new BusinessException("用户id不可为空");
-        return helloService.sayHello(name);
+        return user;
     }
 }

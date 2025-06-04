@@ -1,5 +1,6 @@
 package com.yy.common.annotation;
 
+import com.yy.common.GlobalResponseHandler;
 import com.yy.common.exception.GlobalExceptionHandler;
 import com.yy.tool.SpringTool;
 import org.springframework.context.annotation.Import;
@@ -18,7 +19,8 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)  //运行时注解
 @Documented
 @Import({GlobalExceptionHandler.class,
-        SpringTool.class
+        SpringTool.class,
+        GlobalResponseHandler.class
 })
 public @interface CommonConfig {
 }
