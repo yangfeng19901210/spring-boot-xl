@@ -39,7 +39,6 @@ public class TestServiceImpl implements TestService {
                 5,
                 -1, TimeUnit.SECONDS,
                 () -> {
-
                     return update(orderId); // 返回支付结果
                 }
         );
