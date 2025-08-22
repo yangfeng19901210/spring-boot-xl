@@ -1,17 +1,16 @@
 package com.yy.study.controller;
 
-import cn.dsk.service.HelloService;
+//import cn.dsk.service.HelloService;
 import com.yy.study.domain.entity.User;
 import com.yy.study.service.TestService;
+import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 /*********************************************************
  ** 测试controller
@@ -28,8 +27,8 @@ import javax.validation.constraints.Pattern;
 public class TestController {
     @Resource
     private TestService testService;
-    @Resource
-    private HelloService helloService;
+//    @Resource
+//    private HelloService helloService;
     // 测试方法
     @RequestMapping("/hello")
     public String hello() {

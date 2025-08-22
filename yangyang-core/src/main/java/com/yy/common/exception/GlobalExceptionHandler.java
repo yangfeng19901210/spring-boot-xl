@@ -2,11 +2,10 @@ package com.yy.common.exception;
 
 import com.yy.common.Result;
 import io.gitee.loulan_yxq.owner.core.exception.AssertException;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import javax.validation.ConstraintViolationException;
 
 /*********************************************************
  ** 全局异常处理

@@ -12,13 +12,14 @@
         <module>spring-boot-oss</module>
         <module>spring-boot-study</module>
         <module>yangyang-core</module>
+        <module>spring-boot-redis</module>
     </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-boot.version>2.7.6</spring-boot.version>
+        <spring-boot.version>3.1.3</spring-boot.version>
     </properties>
     <!-- 版本号统一管理   -->
     <dependencyManagement>
@@ -47,6 +48,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.gitee.loulan_yxq</groupId>
+            <artifactId>owner-core</artifactId>
+            <version>1.4.1.5-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
