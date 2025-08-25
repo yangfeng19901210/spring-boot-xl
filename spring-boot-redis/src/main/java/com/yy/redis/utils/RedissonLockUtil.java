@@ -2,11 +2,13 @@ package com.yy.redis.utils;
 
 import com.yy.common.exception.LockInterruptedException;
 import com.yy.common.exception.LockTimeoutException;
-import lombok.Getter;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
@@ -19,22 +21,15 @@ import java.util.function.Supplier;
  * @Version 1.0
  */
 @Slf4j
+@Component
 public class RedissonLockUtil {
 
-    private static RedissonClient redissonClient;
+    private static RedissonClient staticRedissonClient;
+    @Resource
+    private RedissonClient redissonClient;
 
     private RedissonLockUtil() {
 
-    }
-
-    /**
-     * 设置项目名称和RedissonClient
-     *
-     * @param redissonClient  redisson客户端
-     * @param applicationName 项目名称
-     */
-    public static void setApplicationName(RedissonClient redissonClient, String applicationName) {
-        RedissonLockUtil.redissonClient = redissonClient;
     }
 
 
@@ -48,10 +43,10 @@ public class RedissonLockUtil {
         if (task == null)
             throw new IllegalArgumentException("任务不能为空");
 
-        RLock rLock = redissonClient.getLock(lockName);
+        RLock rLock = staticRedissonClient.getLock(lockName);
         boolean acquired = false;
         try {
-            log.debug("线程[{}]尝试获取锁: {}", Thread.currentThread().getName(), lockName);
+            log.info("线程[{}]尝试获取锁: {}", Thread.currentThread().getId(), lockName);
             // 启用看门狗（leaseTime = -1）
             acquired = rLock.tryLock(waitTime, -1, timeUnit);
 
@@ -106,6 +101,10 @@ public class RedissonLockUtil {
                     return null;
                 }
         );
+    }
+    @PostConstruct
+    public void init() {
+        staticRedissonClient = redissonClient; // 实例 → 静态
     }
 
 

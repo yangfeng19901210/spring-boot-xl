@@ -2,8 +2,11 @@ package com.yy.redis.service.impl;
 
 import com.yy.redis.service.TestService;
 import com.yy.redis.utils.RedissonLockUtil;
+import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,8 +18,10 @@ import java.util.concurrent.TimeUnit;
  * @Version 1.0
  */
 @Service
+@Slf4j
 public class TestServiceImpl implements TestService {
     public void createOrder(String id) {
+        log.info("service创建订单{}",Thread.currentThread().getId());
         // 调用锁方法，无返回值时使用 Runnable
         RedissonLockUtil.lockRun(
                 "order:create:" + id, // 锁名称（业务语义化）
@@ -30,7 +35,7 @@ public class TestServiceImpl implements TestService {
     }
 
     private void query(String id){
-
+        log.info("线程{}于{}执行订单查询{}",Thread.currentThread().getId(), LocalDateTime.now(),id);
     }
     public boolean processPayment(String orderId) {
         // 调用锁方法，通过 Supplier 返回布尔值
@@ -44,6 +49,7 @@ public class TestServiceImpl implements TestService {
         );
     }
     private boolean update(String id){
+        log.info("线程{}于{}执行订单更新{}",Thread.currentThread().getId(), LocalDateTime.now(),id);
         return false;
     }
 }

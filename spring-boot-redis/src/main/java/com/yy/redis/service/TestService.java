@@ -9,4 +9,6 @@ package com.yy.redis.service;
  * @Version 1.0
  */
 public interface TestService {
+    void createOrder(String id);
+    boolean processPayment(String orderId);
 }

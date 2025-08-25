@@ -10,3 +10,7 @@ spring:
           min-idle: 2     # 最小空闲连接
 server:
   port: 9000
+# application.yml
+#logging:
+#  level:
+#    root: DEBUG
