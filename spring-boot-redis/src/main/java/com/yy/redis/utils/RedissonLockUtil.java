@@ -48,7 +48,7 @@ public class RedissonLockUtil {
         try {
             log.info("线程[{}]尝试获取锁: {}", Thread.currentThread().getId(), lockName);
             // 启用看门狗（leaseTime = -1）
-            acquired = rLock.tryLock(waitTime, -1, timeUnit);
+            acquired = rLock.tryLock(waitTime, leaseTime>0?leaseTime:-1, timeUnit);
 
             if (acquired) {
                 return task.get();
