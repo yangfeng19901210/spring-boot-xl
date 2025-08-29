@@ -13,4 +13,10 @@ public interface ProductService extends IService<Product> {
 
     Product selectById(Integer id);
 
+    Product addProduct(Product product);
+
+    Product updateProduct(Product product);
+
+
+
 }

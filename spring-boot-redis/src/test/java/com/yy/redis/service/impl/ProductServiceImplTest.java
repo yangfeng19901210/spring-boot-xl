@@ -27,8 +27,26 @@ class ProductServiceImplTest {
     }
     @Test
     void testGetById(){
-        Product product = productService.selectById(2);
+        Product product = productService.selectById(3);
         System.out.println(product);
     }
 
+    @Test
+    void addProduct() {
+        Product product = new Product();
+        product.setName("哈喽");
+        product.setCategory("测试分类");
+        product.setPrice(new BigDecimal("150"));
+        product.setStockQuantity(103);
+        product.setDescription("本人在次测试");
+        product.setIsAvailable(1);
+        productService.addProduct(product);
+    }
+
+    @Test
+    void updateProduct() {
+        Product product = productService.selectById(3);
+        product.setName("踏雪无痕飞行器");
+        productService.updateProduct(product);
+    }
 }
