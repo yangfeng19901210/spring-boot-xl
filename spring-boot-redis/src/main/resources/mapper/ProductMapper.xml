@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yy.redis.mapper.ProductMapper">
+
+    <resultMap id="BaseResultMap" type="com.yy.redis.domain.Product">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="category" column="category" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="stockQuantity" column="stock_quantity" jdbcType="INTEGER"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="isAvailable" column="is_available" jdbcType="TINYINT"/>
+            <result property="createdAt" column="created_at" jdbcType="TIMESTAMP"/>
+            <result property="updatedAt" column="updated_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,category,
+        price,stock_quantity,description,
+        is_available,created_at,updated_at
+    </sql>
+</mapper>
