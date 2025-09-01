@@ -47,6 +47,7 @@ class ProductServiceImplTest {
     void updateProduct() {
         Product product = productService.selectById(3);
         product.setName("踏雪无痕飞行器");
+        product.setPrice(new BigDecimal("239"));
         productService.updateProduct(product);
     }
 }

@@ -1,11 +1,11 @@
 package com.yy.redis.controller;
 
+import com.yy.redis.domain.Product;
+import com.yy.redis.service.ProductService;
 import com.yy.redis.service.TestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 测试controller
@@ -20,11 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TestController {
     private final TestService testService;
+    private final ProductService productService;
     @PostMapping("/createOrder")
     public String createOrder(){
         log.info("创建订单{}",Thread.currentThread().getId());
         testService.createOrder("123");
         return "test";
+    }
+    @GetMapping("/getProductById/{id}")
+    public Product getProductById(@PathVariable Integer id){
+        return productService.getById(id);
     }
 
 
