@@ -1,8 +1,8 @@
 package com.yy.redis;
 
 import com.yy.redis.domain.Student;
-import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -18,9 +18,9 @@ import java.util.List;
  * @Version 1.0
  */
 @SpringBootTest
-public class RedisBasicTest {
-    @Resource
-    RedisTemplate<String, Object> redisTemplate;
+class RedisBasicTest {
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
 
     @Test
