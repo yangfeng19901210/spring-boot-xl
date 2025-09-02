@@ -29,7 +29,7 @@ public class TestController {
     }
     @GetMapping("/getProductById/{id}")
     public Product getProductById(@PathVariable Integer id){
-        return productService.getById(id);
+        return productService.selectById(id);
     }
 
 
