@@ -34,20 +34,20 @@ class ProductServiceImplTest {
     @Test
     void addProduct() {
         Product product = new Product();
-        product.setName("哈喽");
-        product.setCategory("测试分类");
-        product.setPrice(new BigDecimal("150"));
-        product.setStockQuantity(103);
-        product.setDescription("本人在次测试");
+        product.setName("测试产品2");
+        product.setCategory("测试类别2");
+        product.setPrice(new BigDecimal("1595.3612"));
+        product.setStockQuantity(5500);
+        product.setDescription("这是一个测试产品2");
         product.setIsAvailable(1);
         productService.addProduct(product);
     }
 
     @Test
     void updateProduct() {
-        Product product = productService.selectById(3);
-        product.setName("踏雪无痕飞行器");
-        product.setPrice(new BigDecimal("239"));
+        Product product = productService.selectById(4);
+        product.setName("降龙十八掌");
+        product.setPrice(new BigDecimal("239.10"));
         productService.updateProduct(product);
     }
 }

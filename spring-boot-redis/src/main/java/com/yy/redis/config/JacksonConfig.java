@@ -34,7 +34,7 @@ public class JacksonConfig {
 
         // 注册BigDecimal的序列化器
         module.addSerializer(BigDecimal.class, new ToStringSerializer());
-        // 处理 Java 8 日期时间类型
+        // 处理 Java 8 日期时间类型(全局处理)
         JavaTimeModule javaTimeModule = new JavaTimeModule();
         javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
