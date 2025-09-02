@@ -65,6 +65,8 @@ public class RedisConfig {
 
         return RedisCacheManager.builder(redisConnectionFactory)
                 .cacheDefaults(config)
+                // 可以针对不同的缓存空间设置不同的过期时间
+                .withCacheConfiguration("users", config.entryTtl(Duration.ofHours(240)))
                 .build();
     }
 
