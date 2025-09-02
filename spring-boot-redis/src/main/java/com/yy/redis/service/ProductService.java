@@ -16,6 +16,14 @@ public interface ProductService extends IService<Product> {
     Product addProduct(Product product);
 
     Product updateProduct(Product product);
+    /**
+     * 删除商品
+     * @param id 商品id
+     * @Return: boolean
+     * @author: yangfeng
+     * @date: 2025/9/2 10:21
+     **/
+    boolean deleteProduct(Integer id);
 
 
 
